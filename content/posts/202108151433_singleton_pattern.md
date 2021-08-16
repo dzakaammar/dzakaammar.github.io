@@ -1,5 +1,5 @@
 ---
-title: "Creational Patter: Singleton"
+title: "Creational Pattern: Singleton"
 date: 2021-08-15T14:33:09+07:00
 draft: false
 type: "post"

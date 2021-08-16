@@ -12,7 +12,6 @@ ignorefiles = ["content/posts/_templates"]
 
 timeZone = "Asia/Jakarta"
 
-relativeURLs = false
 [params]
 # URL for the avatar on homepage
 avatarURL = "/images/avatar.png"
@@ -21,7 +20,7 @@ avatarURL = "/images/avatar.png"
 avatarSize = "size-xs"
 
 # Description to display on homepage
-description = "welcome to my zettelkasten"
+description = "my zettelkasten"
 
 # Accent color is displayed when you hover over <a> tags
 accentColor = "#F05454"
@@ -74,3 +73,6 @@ identifier = "linkedin"
 url = "https://www.linkedin.com/in/dzaka-ammar-ibrahim/"
 weight = 4
 pre = "<span data-feather='linkedin'></span>"
+
+[permalinks]
+posts = '/:year/:month/:day/:slug/'

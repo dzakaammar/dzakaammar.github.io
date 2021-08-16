@@ -1,12 +1,12 @@
 ---
-title: "Adapter Pattern"
+title: "Structural Pattern: Adapter Pattern"
 date: 2021-08-16T01:49:09+07:00
 draft: false
 type: "post"
 tags: ["software_design", "design_pattern", "oop", "golang"]
 ---
 
-> Bayangkan sebuah adapter dalam perangkat eletronik yang berfungsi menyambungkan antara hardware dengan sumber listrik.
+> Bayangkan sebuah adapter dalam perangkat elektronik yang berfungsi menyambungkan antara hardware dengan sumber listrik.
 > Analogi yang sama dengan *Adapter Pattern* .
 
 Adapter pattern adalah pattern untuk menghubungkan sebuah interface yang tidak *compatible* dengan existing interface, dengan membuat sebuah interface sebagai "adapter". Yang tujuannya agar interface tersebut menjadi *compatible*.

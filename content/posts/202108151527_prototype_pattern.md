@@ -1,5 +1,5 @@
 ---
-title: "Prototype Pattern"
+title: "Creational Pattern: Prototype"
 date: 2021-08-15T15:15:09+07:00
 draft: false
 type: "post"

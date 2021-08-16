@@ -1,5 +1,5 @@
 ---
-title: "Abstract Factory Pattern"
+title: "Creational Pattern: Abstract Factory"
 date: 2021-08-14T14:10:09+07:00
 draft: false
 type: "post"

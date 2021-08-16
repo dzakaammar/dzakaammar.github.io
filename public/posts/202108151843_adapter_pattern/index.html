@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #F05454;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Adapter Pattern</title>
+    <meta name="description" content="welcome to my zettelkasten">
+    <meta name="keywords" content='dzaka, ammar, dzakaammar, dzakaammar blog, software_design, design_pattern, oop, golang'>
+
+    <meta property="og:url" content="http://example.org/posts/202108151843_adapter_pattern/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Adapter Pattern">
+    <meta property="og:description" content="welcome to my zettelkasten">
+    <meta property="og:image" content="images/avatar.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Adapter Pattern">
+    <meta name="twitter:description" content="welcome to my zettelkasten">
+    <meta property="twitter:domain" content="http://example.org/posts/202108151843_adapter_pattern/">
+    <meta property="twitter:url" content="http://example.org/posts/202108151843_adapter_pattern/">
+    <meta name="twitter:image" content="images/avatar.png">
+
+    
+    <link rel="canonical" href="http://example.org/posts/202108151843_adapter_pattern/" />
+
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="/css/dark.css">
+
+    <script src="/js/feather-icons.min.js"></script>
+    <script src="/js/main.js"></script>
+
+    
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QFVCGGK5X8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QFVCGGK5X8');
+</script>
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="http://example.org/">
+                <img src="images/avatar.png" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="http://example.org/">dzaka.ammar</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="/posts/"> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/tags/"> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/dzakaammar"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="/posts/"> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/tags/"> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/dzakaammar"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+
+    <div class="post-header-section">
+        <h1>Adapter Pattern</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">
+            August 16, 2021
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="/tags/software_design">software_design</a></li>
+        
+            <li class="post-tag"><a href="/tags/design_pattern">design_pattern</a></li>
+        
+            <li class="post-tag"><a href="/tags/oop">oop</a></li>
+        
+            <li class="post-tag"><a href="/tags/golang">golang</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <blockquote>
+<p>Bayangkan sebuah adapter dalam perangkat eletronik yang berfungsi menyambungkan antara hardware dengan sumber listrik.
+Analogi yang sama dengan <em>Adapter Pattern</em> .</p>
+</blockquote>
+<p>Adapter pattern adalah pattern untuk menghubungkan sebuah interface yang tidak <em>compatible</em> dengan existing interface, dengan membuat sebuah interface sebagai &ldquo;adapter&rdquo;. Yang tujuannya agar interface tersebut menjadi <em>compatible</em>.
+Secara sederhana, pattern ini digunakan untuk membuat object-object yang <em>incompatible</em> secara interface untuk saling berkolaborasi.</p>
+<p>Adapter membungkus (<em>wraps</em>) sebuah object untuk menyembunyikan logic dan kompleksitas <em>conversion</em>, sehingga menjadikan object tersebut menjadi <em>compatible</em></p>
+<h3 id="karakteristik">Karakteristik</h3>
+<ul>
+<li>Implementasinya menggunakan <em>composition principle</em>, mengimplimentasi sebuah interface dan mem-<em>wrap</em> interface lainnya</li>
+<li>Ada sebuah <em>Client Interface</em> yang digunakan oleh <em>Client</em> sebagai adapter</li>
+<li>Ada sebuah <em>Adapter</em> class sebagai konkret object dari <em>Client Interface</em>, dimana logic untuk konversi ke interface yang dituju berada</li>
+<li>Ada sebuah <em>Service</em> a.k.a <em>API</em> a.k.a <em>Third Party</em> sebagai tujuan konversi</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">user</span>
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Model</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">Name</span>, <span style="color:#a6e22e">Email</span> <span style="color:#66d9ef">string</span>
+}
+
+<span style="color:#75715e">// Repository adalah Client Interface, karena
+</span><span style="color:#75715e">// service yang bertindak sebagai Client tidak perlu tahu
+</span><span style="color:#75715e">// bagaimana atau metode apa yang digunakan.
+</span><span style="color:#75715e">// Secara sederhana, Service type tidak compatible dengan 
+</span><span style="color:#75715e">// API atau Third Party yang digunakan sebagai &#34;repository&#34;.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Repository</span> <span style="color:#66d9ef">interface</span> {
+	<span style="color:#a6e22e">Create</span>(<span style="color:#a6e22e">u</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Model</span>) <span style="color:#66d9ef">error</span>	
+}
+
+<span style="color:#75715e">// Service adalah client yang menggunakan Repository sebagai
+</span><span style="color:#75715e">// adapter untuk memenuhi logic di dalam internal proses miliknya
+</span><span style="color:#75715e">// sendiri
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Service</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">r</span> <span style="color:#a6e22e">Repository</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">NewService</span>(<span style="color:#a6e22e">r</span> <span style="color:#a6e22e">Repository</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">Service</span> {
+	<span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Service</span>{<span style="color:#a6e22e">r</span>: <span style="color:#a6e22e">r</span>}
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#a6e22e">Service</span>) <span style="color:#a6e22e">Create</span>(<span style="color:#a6e22e">u</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Model</span>) <span style="color:#66d9ef">error</span> {
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Create</span>(<span style="color:#a6e22e">u</span>)
+	
+}
+
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">inmemory</span>
+
+<span style="color:#75715e">// UserRepository adalah implementasi/konkret type dari Repository
+</span><span style="color:#75715e">// yang bertindak sebagai adapter. Dalam hal ini bertindak
+</span><span style="color:#75715e">// sebagai adapter ke in-memory storage (hash map)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">UserRepository</span> <span style="color:#66d9ef">struct</span>{
+	<span style="color:#a6e22e">m</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">string</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">New</span>() <span style="color:#f92672">*</span><span style="color:#a6e22e">UserRepository</span> {
+	<span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">UserRepository</span>{
+		<span style="color:#a6e22e">m</span>: make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">string</span>),
+	}
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">ur</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">UserRepository</span>) <span style="color:#a6e22e">Create</span>(<span style="color:#a6e22e">u</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">Model</span>) <span style="color:#66d9ef">error</span> {
+	<span style="color:#a6e22e">ur</span>.<span style="color:#a6e22e">m</span>.[<span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Name</span>] = <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Email</span>
+	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
+}
+
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">db</span>
+
+<span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;database/sql&#34;</span>
+	<span style="color:#e6db74">&#34;errors&#34;</span>
+)
+
+<span style="color:#75715e">// UserRepository adalah implementasi/konkret type dari Repository
+</span><span style="color:#75715e">// yang bertindak sebagai adapter. Dalam hal ini bertindak
+</span><span style="color:#75715e">// sebagai adapter ke db sql.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">UserRepository</span> <span style="color:#66d9ef">struct</span>{
+	<span style="color:#a6e22e">db</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">sql</span>.<span style="color:#a6e22e">DB</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">New</span>(<span style="color:#a6e22e">db</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">sql</span>.<span style="color:#a6e22e">DB</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">UserRepository</span> {
+	<span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">UserRepository</span>{
+		<span style="color:#a6e22e">db</span>: <span style="color:#a6e22e">db</span>,
+	}
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">ur</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">UserRepository</span>) <span style="color:#a6e22e">Create</span>(<span style="color:#a6e22e">u</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">Model</span>) <span style="color:#66d9ef">error</span> {
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">ur</span>.<span style="color:#a6e22e">db</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">errors</span>.<span style="color:#a6e22e">New</span>(<span style="color:#e6db74">&#34;db is nil&#34;</span>)
+	}
+	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
+}
+
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;adapter/inmemory&#34;</span>
+	<span style="color:#e6db74">&#34;adapter/user&#34;</span>
+	<span style="color:#e6db74">&#34;adapter/db&#34;</span>
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#a6e22e">inmemRepo</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">inmemory</span>.<span style="color:#a6e22e">NewUserRepository</span>()
+	<span style="color:#a6e22e">service</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">NewService</span>(<span style="color:#a6e22e">inmemRepo</span>)
+	<span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">service</span>.<span style="color:#a6e22e">Create</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">Model</span>{
+		<span style="color:#a6e22e">Name</span>: <span style="color:#e6db74">&#34;foo&#34;</span>,
+		<span style="color:#a6e22e">Email</span>: <span style="color:#e6db74">&#34;foo@bar.com&#34;</span>,
+	})
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> { panic(<span style="color:#a6e22e">err</span>) } <span style="color:#75715e">// tidak akan panic
+</span><span style="color:#75715e"></span>	
+	<span style="color:#a6e22e">dbRepo</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">NewUserRepository</span>(<span style="color:#66d9ef">nil</span>) <span style="color:#75715e">// set nil
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">service</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">NewService</span>(<span style="color:#a6e22e">dbRepo</span>)
+	<span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">service</span>.<span style="color:#a6e22e">Create</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">Model</span>{
+		<span style="color:#a6e22e">Name</span>: <span style="color:#e6db74">&#34;foo&#34;</span>,
+		<span style="color:#a6e22e">Email</span>: <span style="color:#e6db74">&#34;foo@bar.com&#34;</span>,
+	})
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> { panic(<span style="color:#a6e22e">err</span>) } <span style="color:#75715e">// akan panic
+</span><span style="color:#75715e"></span>	
+}
+</code></pre></div><p>Adapter pattern akan membuat kita menyediakan <em>middle-layer</em> yang bertugas sebagai translator antara client code dengan <em>third-party</em>, <em>legacy class</em>, atau interface apapun yang tidak compatible</p>
+<h3 id="pros">Pros</h3>
+<ul>
+<li>Single reponsibility principle. Kita dapat memisahkan logic konversi dengan <em>primary business logic</em></li>
+<li>Open/Closed Principle. Kita dapat meng-extend atau menambah implementasi adapter baru tanpa harus merubah implementas adapter yang sudah ada.</li>
+</ul>
+<h3 id="cons">Cons</h3>
+<ul>
+<li></li>
+</ul>
+
+        </p>
+    </div>
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    <span>&copy; 2021 </span>
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

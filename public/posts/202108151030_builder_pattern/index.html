@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #F05454;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Builder Pattern</title>
+    <meta name="description" content="welcome to my zettelkasten">
+    <meta name="keywords" content='dzaka, ammar, dzakaammar, dzakaammar blog, software_design, design_pattern, oop, golang'>
+
+    <meta property="og:url" content="http://example.org/posts/202108151030_builder_pattern/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Builder Pattern">
+    <meta property="og:description" content="welcome to my zettelkasten">
+    <meta property="og:image" content="images/avatar.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Builder Pattern">
+    <meta name="twitter:description" content="welcome to my zettelkasten">
+    <meta property="twitter:domain" content="http://example.org/posts/202108151030_builder_pattern/">
+    <meta property="twitter:url" content="http://example.org/posts/202108151030_builder_pattern/">
+    <meta name="twitter:image" content="images/avatar.png">
+
+    
+    <link rel="canonical" href="http://example.org/posts/202108151030_builder_pattern/" />
+
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="/css/dark.css">
+
+    <script src="/js/feather-icons.min.js"></script>
+    <script src="/js/main.js"></script>
+
+    
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QFVCGGK5X8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QFVCGGK5X8');
+</script>
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="http://example.org/">
+                <img src="images/avatar.png" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="http://example.org/">dzaka.ammar</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="/posts/"> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/tags/"> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/dzakaammar"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="/posts/"> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/tags/"> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/dzakaammar"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+
+    <div class="post-header-section">
+        <h1>Builder Pattern</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">
+            August 16, 2021
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="/tags/software_design">software_design</a></li>
+        
+            <li class="post-tag"><a href="/tags/design_pattern">design_pattern</a></li>
+        
+            <li class="post-tag"><a href="/tags/oop">oop</a></li>
+        
+            <li class="post-tag"><a href="/tags/golang">golang</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>Builder pattern menyediakan cara untuk meng-<em>construct</em> sebuah object yang kompleks step by step dan memproduksi berbagai macam type atau representasi object dengan satu cara konstruksi yang sama.</p>
+<p>Bayangkan sebuah object memiliki beberapa parameter pada saat konstruksi. Parameter-parameter tersebut akan menentukan bagaimana sebuah object akan terbentuk. Parameter akan terus bertambah seiring banyaknya posibilitas konstruksi.</p>
+<p>Kita dapat memilih untuk membuat sebuah atau beberapa fungsi untuk menghandle <em>possibility</em> tersebut:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">FirstName</span> <span style="color:#66d9ef">string</span>
+	<span style="color:#a6e22e">LastName</span> <span style="color:#66d9ef">string</span>
+	<span style="color:#a6e22e">Email</span> <span style="color:#66d9ef">string</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">NewUserWithoutEmail</span>(<span style="color:#a6e22e">fn</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">ln</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">string</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">User</span> {
+	<span style="color:#a6e22e">u</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">User</span>{}
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">fn</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">FirstName</span> = <span style="color:#a6e22e">fn</span>
+	}
+	<span style="color:#f92672">...</span>
+	<span style="color:#f92672">...</span>
+}
+</code></pre></div><p>Terlebih, dengan menggunakan metode ini, tidak semua parameter akan digunakan. Dan dengan banyak nya parameter yang ada akan menambah kompleksitas code dan <em>ugly</em>.</p>
+<p>Builder pattern menyediakan cara yang lebih <em>proper</em> untuk menghandle case tersebut.</p>
+<h3 id="karakteristik">Karakteristik</h3>
+<ul>
+<li>Tujuannya ingin menghandle konstruksi dari beberapa jenis product dengan <em>construction step</em> yang sama</li>
+<li>Ada sebuah interface <em>Builder</em> sebagai <em>construction step</em>. Dengan menggunakan interface ini, object akan di-<em>construct</em> dengan cara yang sama namun implementasi yang berbeda</li>
+<li>Adanya sebuah class <em><strong>Director</strong></em>. Class <em>Director</em> akan menyembunyikan detail bagaimana sebuah object akan dikonstruksi dengan menggunakan interface <em>Builder</em> yang sama.</li>
+<li><em>Builder</em> juga memungkinkan memiliki fungsi <em>Result</em>, untuk mengambil hasil akhir dari object yang telah di build</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Beverage</span> <span style="color:#66d9ef">interface</span> {
+	<span style="color:#a6e22e">Price</span>() <span style="color:#66d9ef">int</span>
+}
+
+<span style="color:#75715e">// BeverageBuilder adalah construction steps
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">BeverageBuilder</span> <span style="color:#66d9ef">interface</span> {
+	<span style="color:#a6e22e">SweetLevel</span>(<span style="color:#a6e22e">i</span> <span style="color:#66d9ef">int</span>)
+	<span style="color:#a6e22e">AddMilk</span>(<span style="color:#a6e22e">b</span> <span style="color:#66d9ef">bool</span>)
+	<span style="color:#a6e22e">AddHoney</span>(<span style="color:#a6e22e">b</span> <span style="color:#66d9ef">bool</span>)
+	
+	<span style="color:#a6e22e">Result</span>() <span style="color:#a6e22e">Beverage</span> <span style="color:#75715e">// Result bisa return abstraction ataupun concrete object
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#75715e">// Director bertugas mengimplementasi logic konstruksi
+</span><span style="color:#75715e">// meng-encapsulate logic tsb dari client
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Director</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">bb</span> <span style="color:#a6e22e">BeverageBuilder</span>
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">d</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Director</span>) <span style="color:#a6e22e">SetBuilder</span>(<span style="color:#a6e22e">cb</span> <span style="color:#a6e22e">BeverageBuilder</span>) {
+	<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">bb</span> = <span style="color:#a6e22e">bb</span>
+}
+
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">d</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Director</span>) <span style="color:#a6e22e">LessSugar</span>() {
+	<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">bb</span>.<span style="color:#a6e22e">SweetLevel</span>(<span style="color:#ae81ff">0</span>)
+}
+
+
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#a6e22e">director</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Director</span>{}
+	<span style="color:#a6e22e">coffeeBuilder</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">CoffeeBuilder</span>{}
+	
+	<span style="color:#a6e22e">director</span>.<span style="color:#a6e22e">SetBuilder</span>(<span style="color:#a6e22e">coffeeBuilder</span>)
+	<span style="color:#a6e22e">director</span>.<span style="color:#a6e22e">LessSugar</span>()
+	
+	<span style="color:#a6e22e">coffee</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">coffeeBuilder</span>.<span style="color:#a6e22e">Result</span>()
+	<span style="color:#a6e22e">coffee</span>.<span style="color:#a6e22e">Price</span>()
+}
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Coffee</span> <span style="color:#66d9ef">struct</span>{
+	<span style="color:#a6e22e">price</span> <span style="color:#66d9ef">int</span>
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Coffee</span>) <span style="color:#a6e22e">Price</span>() <span style="color:#66d9ef">int</span> {
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">price</span>
+}
+
+<span style="color:#75715e">// CoffeeBuilder adalah konkret builder untuk produk Coffee
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">CoffeeBuilder</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">coffee</span> <span style="color:#a6e22e">Coffee</span>
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">CoffeeBuilder</span>) <span style="color:#a6e22e">SweetLevel</span>(<span style="color:#a6e22e">i</span> <span style="color:#66d9ef">int</span>) {
+	<span style="color:#66d9ef">switch</span> <span style="color:#a6e22e">i</span> {
+	<span style="color:#66d9ef">case</span> <span style="color:#ae81ff">0</span>: 
+		<span style="color:#66d9ef">return</span>
+	<span style="color:#66d9ef">default</span>:
+		<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">coffee</span>.<span style="color:#a6e22e">price</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1000</span>
+	
+	}
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">CoffeeBuilder</span>) <span style="color:#a6e22e">AddHoney</span>(<span style="color:#a6e22e">b</span> <span style="color:#66d9ef">bool</span>) {
+	<span style="color:#75715e">// coffee + honey is unaccaptable
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">CoffeeBuilder</span>) <span style="color:#a6e22e">AddMilk</span>(<span style="color:#a6e22e">b</span> <span style="color:#66d9ef">bool</span>) {
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">b</span> {
+		<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">coffee</span>.<span style="color:#a6e22e">price</span> = <span style="color:#ae81ff">1000</span>
+	}
+}
+
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">CoffeeBuilder</span>) <span style="color:#a6e22e">Result</span>() <span style="color:#a6e22e">Beverage</span> {
+	<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">coffee</span>.<span style="color:#a6e22e">price</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">5000</span> <span style="color:#75715e">// base price
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">coffee</span>
+}
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Tea</span> <span style="color:#66d9ef">struct</span>{
+	<span style="color:#a6e22e">price</span> <span style="color:#66d9ef">int</span>
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Tea</span>) <span style="color:#a6e22e">Price</span>() <span style="color:#66d9ef">int</span> {
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">price</span>
+}
+
+<span style="color:#75715e">// TeaBuilder adalah konkret builder untuk produk Tea
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">TeaBuilder</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">tea</span> <span style="color:#a6e22e">Tea</span>
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">TeaBuilder</span>) <span style="color:#a6e22e">SweetLevel</span>(<span style="color:#a6e22e">i</span> <span style="color:#66d9ef">int</span>) {
+	<span style="color:#66d9ef">switch</span> <span style="color:#a6e22e">i</span> {
+	<span style="color:#66d9ef">case</span> <span style="color:#ae81ff">0</span>: 
+		<span style="color:#66d9ef">return</span>
+	<span style="color:#66d9ef">default</span>:
+		<span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">tea</span>.<span style="color:#a6e22e">price</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">500</span>
+	
+	}
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">TeaBuilder</span>) <span style="color:#a6e22e">AddHoney</span>(<span style="color:#a6e22e">b</span> <span style="color:#66d9ef">bool</span>) {
+	<span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">tea</span>.<span style="color:#a6e22e">price</span> = <span style="color:#ae81ff">1000</span>
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">TeaBuilder</span>) <span style="color:#a6e22e">AddMilk</span>(<span style="color:#a6e22e">b</span> <span style="color:#66d9ef">bool</span>) {
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">b</span> {
+		<span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">tea</span>.<span style="color:#a6e22e">price</span> = <span style="color:#ae81ff">1000</span>
+	}
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">TeaBuilder</span>) <span style="color:#a6e22e">Result</span>() <span style="color:#a6e22e">Beverage</span> {
+	<span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">tea</span>.<span style="color:#a6e22e">price</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2000</span> <span style="color:#75715e">// base price
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">tea</span>
+}
+
+</code></pre></div><p>Gunakan builder pattern jika konstruksi sebuah object ditentukan oleh banyak parameter, dan gunakan metode ini jika tujuan kita adalah ingin membuat code yang dapat menghandle representasi yang berbeda dari tiap object</p>
+<blockquote>
+<p><strong>Pastikan terlebih dahulu <em>common construction steps</em> yang ingin digunakan. Tanpa itu, builder pattern tidak bisa diimplementasi.</strong></p>
+</blockquote>
+<h3 id="pros">Pros</h3>
+<ul>
+<li>Dapat mengkonstruksi object dengan step by step</li>
+<li>Reuse code dan constructions code untuk membuat berbagai variasi dari produk</li>
+<li>Single responsibility principle</li>
+</ul>
+<h3 id="cons">Cons</h3>
+<ul>
+<li>complex</li>
+</ul>
+
+        </p>
+    </div>
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    <span>&copy; 2021 </span>
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

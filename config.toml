@@ -1,0 +1,70 @@
+baseURL = "http://example.org/"
+defaultContentLanguage = "en"
+languageCode = "en"
+
+title = "dzaka.ammar"
+
+theme = "gokarna"
+
+# Automatically generate robots.txt
+enableRobotsTXT = true
+
+ignorefiles = [ "content/posts/_templates" ]
+
+timeZone = "Asia/Jakarta"
+
+[params]
+# URL for the avatar on homepage
+avatarURL = "images/avatar.png"
+
+# Choose one of size-xs, size-s, size-m, size-l & size-xl. (Default: size-m)
+avatarSize = "size-xs"
+
+# Description to display on homepage
+description = "welcome to my zettelkasten"
+
+# Accent color is displayed when you hover over <a> tags
+accentColor = "#F05454"
+
+# You can use this to inject any HTML in the <head> tag.
+# Ideal usecase for this is to import custom js/css or add your analytics snippet
+customHeadHTML = """<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QFVCGGK5X8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QFVCGGK5X8');
+</script>"""
+
+
+# Keywords relevant for SEO
+metaKeywords = ["dzaka", "ammar", "dzakaammar", "dzakaammar blog"]
+
+# If you want to display posts on the homepage, the options are
+# "popular" (order posts by weight), "recent" (order posts by date)
+# or "" (do not display, default option)
+showPostsOnHomePage = "recent"
+
+# Footer text
+footer = ""
+
+[menu]
+[[menu.main]]
+identifier = "posts"
+url = "/posts/"
+name = "Posts"
+weight = 1
+
+[[menu.main]]
+identifier = "tags"
+name = "Tags"
+url = "/tags/"
+weight = 2
+
+[[menu.main]]
+identifier = "github"
+url = "https://github.com/dzakaammar"
+weight = 3
+pre = "<span data-feather='github'></span>"

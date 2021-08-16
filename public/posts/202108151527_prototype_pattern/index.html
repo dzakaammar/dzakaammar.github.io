@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #F05454;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Prototype Pattern</title>
+    <meta name="description" content="welcome to my zettelkasten">
+    <meta name="keywords" content='dzaka, ammar, dzakaammar, dzakaammar blog, software_design, design_pattern, oop, golang'>
+
+    <meta property="og:url" content="http://example.org/posts/202108151527_prototype_pattern/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Prototype Pattern">
+    <meta property="og:description" content="welcome to my zettelkasten">
+    <meta property="og:image" content="images/avatar.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Prototype Pattern">
+    <meta name="twitter:description" content="welcome to my zettelkasten">
+    <meta property="twitter:domain" content="http://example.org/posts/202108151527_prototype_pattern/">
+    <meta property="twitter:url" content="http://example.org/posts/202108151527_prototype_pattern/">
+    <meta name="twitter:image" content="images/avatar.png">
+
+    
+    <link rel="canonical" href="http://example.org/posts/202108151527_prototype_pattern/" />
+
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="/css/dark.css">
+
+    <script src="/js/feather-icons.min.js"></script>
+    <script src="/js/main.js"></script>
+
+    
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QFVCGGK5X8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QFVCGGK5X8');
+</script>
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="http://example.org/">
+                <img src="images/avatar.png" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="http://example.org/">dzaka.ammar</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="/posts/"> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="/tags/"> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/dzakaammar"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="/posts/"> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/tags/"> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/dzakaammar"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+
+    <div class="post-header-section">
+        <h1>Prototype Pattern</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">
+            August 16, 2021
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="/tags/software_design">software_design</a></li>
+        
+            <li class="post-tag"><a href="/tags/design_pattern">design_pattern</a></li>
+        
+            <li class="post-tag"><a href="/tags/oop">oop</a></li>
+        
+            <li class="post-tag"><a href="/tags/golang">golang</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>Prototype pattern menyediakan cara untuk meng-<em>copy</em> existing object tanpa membuat code harus dependen terhadap class mereka</p>
+<h3 id="karakteristik">Karakteristik</h3>
+<ul>
+<li>Tujuannya ingin membuat sebuat object baru dengan cara mengcopy object yang telah ada secara komplit (tidak bisa dilakukan secara direct, karena mungkin ada private field yang tidak bisa terlihat atau tidak dapat diakses dari sisi client)</li>
+<li>Mengcopy object tanpa harus terikat dengan logic bagaimana seharusnya object tersebut dicopy</li>
+<li>Adanya sebuah interface <em><strong>Prototype</strong></em> untuk mengabstraksi proses cloning. Biasanya sebuah interface dengan hanya sebuah method <code>clone</code></li>
+<li>Konkrit implementasi dari <em>Prototype</em> tidak hanya meng-copy object tapi menghandle <em>edge cases</em> dari object tersebut</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+
+<span style="color:#75715e">// BeverageType adalah data yang digunakan untuk menentukan
+</span><span style="color:#75715e">// object mana yang akan di-clone
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">BeverageType</span> <span style="color:#66d9ef">uint</span>
+<span style="color:#66d9ef">const</span> (
+	<span style="color:#a6e22e">Cold</span> <span style="color:#a6e22e">BeverageType</span> = <span style="color:#66d9ef">iota</span>
+	<span style="color:#a6e22e">Hot</span>
+)
+
+<span style="color:#75715e">// Beverage adalah interface product
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Beverage</span> <span style="color:#66d9ef">interface</span>{
+	<span style="color:#a6e22e">Drink</span>()
+}
+
+<span style="color:#75715e">// BeverageCloner adalah interface untuk cloner
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">BeverageCloner</span> <span style="color:#66d9ef">interface</span>{
+	<span style="color:#a6e22e">Clone</span>(<span style="color:#a6e22e">b</span> <span style="color:#a6e22e">BeverageType</span>) <span style="color:#a6e22e">Coffee</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#a6e22e">coffeeCloner</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">CoffeeCache</span>{}
+	<span style="color:#a6e22e">beverage</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">coffeeCloner</span>.<span style="color:#a6e22e">Clone</span>(<span style="color:#a6e22e">Cold</span>)
+	<span style="color:#a6e22e">beverage</span>.<span style="color:#a6e22e">Drink</span>()
+	
+	<span style="color:#a6e22e">arr</span> <span style="color:#f92672">:=</span> make()
+}
+
+<span style="color:#75715e">// Coffee adalah concrete product dari Beverage
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Coffee</span> <span style="color:#66d9ef">struct</span>{
+	<span style="color:#a6e22e">price</span>
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#a6e22e">Coffee</span>) <span style="color:#a6e22e">Drink</span>() {
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;drink coffee&#34;</span>)
+}
+
+<span style="color:#66d9ef">var</span> (
+	<span style="color:#a6e22e">hotCoffeePrototype</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Coffee</span> = <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Coffee</span>{}
+	<span style="color:#a6e22e">coldCoffeePrototype</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Coffee</span> = <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Coffee</span>{}
+)
+
+<span style="color:#75715e">// CoffeeCache adalah concrete object dari Cloner
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">CofeeCache</span> <span style="color:#66d9ef">struct</span> {}
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">CoffeeCache</span>) <span style="color:#a6e22e">Clone</span>(<span style="color:#a6e22e">bt</span> <span style="color:#a6e22e">BeverageType</span>) <span style="color:#a6e22e">Beverage</span> {
+	<span style="color:#a6e22e">swtich</span> <span style="color:#a6e22e">bt</span> {
+	<span style="color:#66d9ef">case</span> <span style="color:#a6e22e">Cold</span>:
+		<span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">coldCoffeePrototype</span>
+		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+	<span style="color:#66d9ef">default</span>:
+		<span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">hotCoffeePrototype</span>
+		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>
+	}
+}
+
+</code></pre></div><h3 id="pros">Pros</h3>
+<ul>
+<li>Tidak perlu menggunakan inisialisasi code, cukup clone <em>pre-built prototype</em></li>
+<li>Membuat sebuah kompleks object menjadi lebih sederhana</li>
+<li>Clone object tanpa harus terikat/coupled dengan concrete class</li>
+</ul>
+<h3 id="cons">Cons</h3>
+<ul>
+<li>Meng-clone object yang kompleks dan memiliki <em>circular reference</em> akan menjadi lebih rumit</li>
+</ul>
+
+        </p>
+    </div>
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    <span>&copy; 2021 </span>
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

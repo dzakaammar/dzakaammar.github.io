@@ -1,7 +1,7 @@
 baseURL = "http://example.org/"
 defaultContentLanguage = "en"
 languageCode = "en"
-configDir = "config"
+
 title = "dzaka.ammar"
 
 theme = "gokarna"

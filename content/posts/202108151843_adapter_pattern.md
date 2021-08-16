@@ -9,10 +9,9 @@ tags: ["software_design", "design_pattern", "oop", "golang"]
 > Bayangkan sebuah adapter dalam perangkat elektronik yang berfungsi menyambungkan antara hardware dengan sumber listrik.
 > Analogi yang sama dengan *Adapter Pattern* .
 
-Adapter pattern adalah pattern untuk menghubungkan sebuah interface yang tidak *compatible* dengan existing interface, dengan membuat sebuah interface sebagai "adapter". Yang tujuannya agar interface tersebut menjadi *compatible*.
-Secara sederhana, pattern ini digunakan untuk membuat object-object yang *incompatible* secara interface untuk saling berkolaborasi.
+Adapter pattern adalah pattern untuk menghubungkan sebuah interface yang tidak *compatible* dengan existing interface, dengan membuat sebuah interface sebagai "adapter". Secara sederhana, pattern ini digunakan untuk membuat object-object yang *incompatible* secara interface untuk saling berkolaborasi.
 
-Adapter membungkus (*wraps*) sebuah object untuk menyembunyikan logic dan kompleksitas *conversion*, sehingga menjadikan object tersebut menjadi *compatible*
+Adapter membungkus sebuah object untuk menyembunyikan logic dan kompleksitas *conversion*, sehingga menjadikan object tersebut menjadi *compatible*
 ### Karakteristik
 - Implementasinya menggunakan *composition principle*, mengimplimentasi sebuah interface dan mem-*wrap* interface lainnya
 - Ada sebuah *Client Interface* yang digunakan oleh *Client* sebagai adapter

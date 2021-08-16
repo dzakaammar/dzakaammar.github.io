@@ -6,7 +6,7 @@ type: "post"
 tags: ["software_design", "design_pattern", "oop", "golang"]
 ---
 
-Prototype pattern menyediakan cara untuk meng-*copy* existing object tanpa membuat code harus dependen terhadap class mereka
+Prototype pattern menyediakan cara untuk meng-*copy* existing object tanpa membuat code harus dependen terhadap class mereka.
 
 ### Karakteristik
 - Tujuannya ingin membuat sebuat object baru dengan cara mengcopy object yang telah ada secara komplit (tidak bisa dilakukan secara direct, karena mungkin ada private field yang tidak bisa terlihat atau tidak dapat diakses dari sisi client)

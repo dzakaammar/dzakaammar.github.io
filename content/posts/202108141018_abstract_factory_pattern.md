@@ -6,7 +6,7 @@ type: "post"
 tags: ["software_design", "design_pattern", "oop", "golang"]
 ---
 
-Abstract factory menyediakan produksi *families* dari objek-objek yang terkait tanpa harus menentukan konkrit class nya
+Abstract factory menyediakan produksi *families* dari objek-objek yang terkait tanpa harus menentukan konkrit class nya.
 
 ### Karakteristik
 - Ada banyak tipe produk dan banyak variant dari produk. Contoh tipe produk: meja, kursi, sofa. Contoh variant dari produk: style modern, style kuno, style minimalis
@@ -111,4 +111,4 @@ Pertimbangkan untuk menggunakan Abstract Factory ketika telah menggunakan Factor
 - open/closed principle
 
 ### Cons
-- complex
+- kompleksitas code

@@ -174,5 +174,5 @@ Gunakan builder pattern jika konstruksi sebuah object ditentukan oleh banyak par
 - Single responsibility principle
 
 ### Cons
-- complex
+- kompleksitas code
 

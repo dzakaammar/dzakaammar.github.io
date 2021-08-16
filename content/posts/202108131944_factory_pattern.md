@@ -6,11 +6,11 @@ type: "post"
 tags: ["software_design", "design_pattern", "oop", "golang"]
 ---
 
-Factory method menyediakan cara untuk membuat sebuat object pada superclass, namun memberikan cara subclass untuk merubah type nya. 
+Factory pattern menyediakan cara untuk membuat sebuah object pada superclass, namun memberikan cara subclass untuk merubah type nya. 
 
 ### Karakteristik
 - Ada abstraksi dari produk object menggunakan interface
-- Setiap concrete implementation object produk tersebut, harus men=*satisfy* interface
+- Setiap concrete implementation object produk tersebut, harus men-*satisfy* interface
 - Ada sebuah function yang menjadi logic *creational* nya
 - Function tersebut membutuhkan "data", untuk menentukan object mana yang harus di *create*
 

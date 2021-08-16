@@ -46,9 +46,6 @@ metaKeywords = ["dzaka", "ammar", "dzakaammar", "dzakaammar blog"]
 # or "" (do not display, default option)
 showPostsOnHomePage = "recent"
 
-# Footer text
-footer = ""
-
 [menu]
 [[menu.main]]
 identifier = "posts"

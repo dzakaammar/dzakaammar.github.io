@@ -7,8 +7,11 @@
         "id": "d3de21b0dd9b2b0b",
         "type": "leaf",
         "state": {
-          "type": "empty",
-          "state": {}
+          "type": "markdown",
+          "state": {
+            "file": "202108131940_design_pattern.md",
+            "mode": "source"
+          }
         }
       }
     ],
@@ -65,6 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "202108131940_design_pattern.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -81,6 +85,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "202108131940_design_pattern.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -106,15 +111,15 @@
   },
   "active": "d3de21b0dd9b2b0b",
   "lastOpenFiles": [
+    "202108131940_design_pattern.md",
+    "202108151843_adapter_pattern.md",
+    "202108151527_prototype_pattern.md",
+    "202108131944_factory_pattern.md",
     "202108160222_.md",
     "templates/hugo_post_template.md",
     "templates/hugo_post_template.md.md",
     "202108151841_proxy_pattern.md",
-    "202108151843_adapter_pattern.md",
     "202108151954_bridge_pattern.md",
-    "202108160220_.md",
-    "202108160219.md",
-    "202108131940_design_pattern.md",
-    "202108160218.md"
+    "202108160220_.md"
   ]
 }

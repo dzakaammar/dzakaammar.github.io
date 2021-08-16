@@ -1,6 +1,6 @@
 ---
 title: "Design Pattern"
-date: 2021-08-16T01:49:09+07:00
+date: 2021-08-13T19:40:09+07:00
 draft: false
 type: "post"
 tags: ["software_design", "design_pattern", "oop"]

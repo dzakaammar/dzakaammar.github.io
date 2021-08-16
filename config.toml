@@ -20,10 +20,10 @@ avatarURL = "/images/avatar.png"
 avatarSize = "size-xs"
 
 # Description to display on homepage
-description = "my zettelkasten"
+description = "personal blog. my zettelkasten."
 
 # Accent color is displayed when you hover over <a> tags
-accentColor = "#F05454"
+accentColor = "#045757"
 
 # You can use this to inject any HTML in the <head> tag.
 # Ideal usecase for this is to import custom js/css or add your analytics snippet

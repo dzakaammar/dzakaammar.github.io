@@ -1,7 +1,6 @@
-baseURL = "http://example.org/"
+baseURL = "http://dzakaammar.github.io/"
 defaultContentLanguage = "en"
 languageCode = "en"
-configDir = "config"
 title = "dzaka.ammar"
 
 theme = "gokarna"

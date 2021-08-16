@@ -8,7 +8,8 @@ tags: ["software_design", "design_pattern", "oop", "golang"]
 
 Singleton menyediakan cara untuk membuat *single instance* dan menyediakan cara untuk mengakses/menggunakan instance tersebut sebagai *global variable*. Memastikan hanya terdapat satu instance dari produk tertentu selama aplikasi berjalan.
 
-### Karakterstik
+## Karakterstik
+
 - Terdapat global variable untuk mendefine *single instance*. Dalam banyak implementasi, global variable tersebut memiliki default value dan tidak kosong, untuk selanjutnya bisa diganti melalui fungsi *setter*
 - Adanya *setter function* untuk mengisi value dari instance tersebut
 - Adanya *getter function* untuk memberikan cara agar package lain atau client mengakses instance tersebut
@@ -16,7 +17,7 @@ Singleton menyediakan cara untuk membuat *single instance* dan menyediakan cara 
 - Harus *conccurent safe* dan *nil pointer safe* (jika default value adalah nil)
 
 > Untuk memastikan bahwa instance hanya dapat sekali diubah/diisi, implementasi di Go dapat menggunakan sync.Once.
-> 
+>
 > Dan jika object yang dijadikan singleton ada structural type, maka bisa menggunakan abstraction atau interface agar object tersebut tidak dapat diubah dari sisi client. Hal ini terjadi karena object singleton acapkali berupa reference type (untuk menghindari passing by reference di *getter function*  dan membuat object bisa diubah dari sisi client), selain itu mencegah passing by value dimana akan selalu mengcopy instance tersebut di *getter function*
 
 ```go
@@ -51,7 +52,8 @@ func Get() Logger {
 
 ```
 
-Dan implementasi disisi client 
+Dan implementasi disisi client
+
 ```go
 package main
 
@@ -75,11 +77,13 @@ func main() {
 
 Gunakan singleton pattern ketika dalam keseluruhan program mengharuskan adanya *single instance* yang dapat dishare. Namun, penggunakan singleton harus dibarengi dengan kontrol yang *strict* terhadap global variabel yang dibuat (*gurantees that just one instance of a class*)
 
-### Pros
-- Dengan cara ini dapat diyakini hanya akan terdapat *single instance* selama runtime
-- Instance tersebut dapat diakses secara global 
+## Pros
 
-### Cons
-- Single responsibility principle violation. 
+- Dengan cara ini dapat diyakini hanya akan terdapat *single instance* selama runtime
+- Instance tersebut dapat diakses secara global
+
+## Cons
+
+- Single responsibility principle violation.
 - Perlu special treatment untuk menghandle *concurrent safe*
 - Mungkin akan sulit untuk melakukan unit test, karena langsung terikat dengan global variable dan sulit untuk meng-override untuk keperluan mock

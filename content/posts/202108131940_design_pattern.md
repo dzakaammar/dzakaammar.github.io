@@ -6,7 +6,7 @@ type: "post"
 tags: ["software_design", "design_pattern", "oop"]
 ---
 
-#### Creational Pattern
+## Creational Pattern
 
 Creational pattern menyediakan variasi mekanisme membuat sebuah object, yang tujuannya adalah membuat code yang fleksibel dan *reusable*.
 
@@ -16,7 +16,7 @@ Creational pattern menyediakan variasi mekanisme membuat sebuah object, yang tuj
 4. [Builder]({{<ref "202108151030_builder_pattern">}})
 5. [Prototype]({{<ref "202108151527_prototype_pattern">}})
 
-#### Structural Pattern
+## Structural Pattern
 
 Structural pattern menyediakan mekanisme bagaimana mengatur objek-objek kedalam struktur yang lebih besar, namun tetap menjaga struktur tersebut tetap fleksibel dan efisien.
 
@@ -28,7 +28,8 @@ Structural pattern menyediakan mekanisme bagaimana mengatur objek-objek kedalam 
 6. Composite
 7. Bridge
 
-#### Behavioral Pattern
+## Behavioral Pattern
+
 1. Chain of Responsibility
 2. Command
 3. Iterator
@@ -42,6 +43,7 @@ Structural pattern menyediakan mekanisme bagaimana mengatur objek-objek kedalam 
 
 ---
 
-#### References
+## References
+
 - Dive into Design Patterns - Alexandere Shvets
 - Go Design Patterns - Mario Castro Contreras

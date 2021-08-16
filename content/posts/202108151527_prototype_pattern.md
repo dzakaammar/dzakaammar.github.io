@@ -8,7 +8,8 @@ tags: ["software_design", "design_pattern", "oop", "golang"]
 
 Prototype pattern menyediakan cara untuk meng-*copy* existing object tanpa membuat code harus dependen terhadap class mereka.
 
-### Karakteristik
+## Karakteristik
+
 - Tujuannya ingin membuat sebuat object baru dengan cara mengcopy object yang telah ada secara komplit (tidak bisa dilakukan secara direct, karena mungkin ada private field yang tidak bisa terlihat atau tidak dapat diakses dari sisi client)
 - Mengcopy object tanpa harus terikat dengan logic bagaimana seharusnya object tersebut dicopy
 - Adanya sebuah interface ***Prototype*** untuk mengabstraksi proses cloning. Biasanya sebuah interface dengan hanya sebuah method `clone`
@@ -74,11 +75,12 @@ func (c *CoffeeCache) Clone(bt BeverageType) Beverage {
 
 ```
 
-### Pros
+## Pros
+
 - Tidak perlu menggunakan inisialisasi code, cukup clone *pre-built prototype*
 - Membuat sebuah kompleks object menjadi lebih sederhana
 - Clone object tanpa harus terikat/coupled dengan concrete class
 
+## Cons
 
-### Cons
 - Meng-clone object yang kompleks dan memiliki *circular reference* akan menjadi lebih rumit

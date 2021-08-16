@@ -35,7 +35,8 @@ Terlebih, dengan menggunakan metode ini, tidak semua parameter akan digunakan. D
 
 Builder pattern menyediakan cara yang lebih *proper* untuk menghandle case tersebut.
 
-### Karakteristik
+## Karakteristik
+
 - Tujuannya ingin menghandle konstruksi dari beberapa jenis product dengan *construction step* yang sama
 - Ada sebuah interface *Builder* sebagai *construction step*. Dengan menggunakan interface ini, object akan di-*construct* dengan cara yang sama namun implementasi yang berbeda
 - Adanya sebuah class ***Director***. Class *Director* akan menyembunyikan detail bagaimana sebuah object akan dikonstruksi dengan menggunakan interface *Builder* yang sama.
@@ -104,7 +105,6 @@ func (c *CoffeeBuilder) SweetLevel(i int) {
 		return
 	default:
 		c.coffee.price += 1000
-	
 	}
 }
 
@@ -168,11 +168,12 @@ Gunakan builder pattern jika konstruksi sebuah object ditentukan oleh banyak par
 
 > **Pastikan terlebih dahulu *common construction steps* yang ingin digunakan. Tanpa itu, builder pattern tidak bisa diimplementasi.**
 
-### Pros
+## Pros
+
 - Dapat mengkonstruksi object dengan step by step
 - Reuse code dan constructions code untuk membuat berbagai variasi dari produk
 - Single responsibility principle
 
-### Cons
-- kompleksitas code
+## Cons
 
+- kompleksitas code

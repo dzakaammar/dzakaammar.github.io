@@ -6,9 +6,10 @@ type: "post"
 tags: ["software_design", "design_pattern", "oop", "golang"]
 ---
 
-Factory pattern menyediakan cara untuk membuat sebuah object pada superclass, namun memberikan cara subclass untuk merubah type nya. 
+Factory pattern menyediakan cara untuk membuat sebuah object pada superclass, namun memberikan cara subclass untuk merubah type nya.
 
-### Karakteristik
+## Karakteristik
+
 - Ada abstraksi dari produk object menggunakan interface
 - Setiap concrete implementation object produk tersebut, harus men-*satisfy* interface
 - Ada sebuah function yang menjadi logic *creational* nya
@@ -54,10 +55,12 @@ func main() {
 
 Gunakan factory method ketika ingin menyediakan sebuah fungsi kepada client/pengguna package, namun dengan cara yang dapat meng-*extend* internal component
 
-### Pros:
+## Pros
+
 - Decoupled antara code *creator* dan *concrete* produk
-- Single responsibility priciple. Tiap jenis product diimplementasi pada konkrit produk yang berbeda, dan hanya memiliki *single responsibility* 
+- Single responsibility priciple. Tiap jenis product diimplementasi pada konkrit produk yang berbeda, dan hanya memiliki *single responsibility*
 - Open/Closed Principle. Kita dapat menambahkan jenis produk baru tanpa harus merubah implementasi pada tipe produk yang sudah ada.
 
-### Cons:
+## Cons
+
 - Code mungkin akan terlihat kompleks, semakin banyak tipe produk akan semakin kompleks.

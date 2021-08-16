@@ -8,7 +8,8 @@ tags: ["software_design", "design_pattern", "oop", "golang"]
 
 Abstract factory menyediakan produksi *families* dari objek-objek yang terkait tanpa harus menentukan konkrit class nya.
 
-### Karakteristik
+## Karakteristik
+
 - Ada banyak tipe produk dan banyak variant dari produk. Contoh tipe produk: meja, kursi, sofa. Contoh variant dari produk: style modern, style kuno, style minimalis
 - Famili produk (tipe produk + jenis variant nya)
 - Tujuannya ingin membuat sebuah *factory* untuk memproduksi famili dari produk
@@ -104,11 +105,13 @@ func (l LunchMenu) GetBread() Bread {
 
 Pertimbangkan untuk menggunakan Abstract Factory ketika telah menggunakan Factory method. Ketika sebuah class menghandle lebih dari satu tipe product, mungkin akan lebih layak untuk diextract kedalah sebuah Factory baru atau menggunakan Abstract method secara keseluruhan
 
-### Pros
+## Pros
+
 - Yakin dengan bahwa setiap product yang dihasilkan akan selalu compatible
 - decoupled antara setiap implementasi product ataupun variant product
 - Single responsibility principle
 - open/closed principle
 
-### Cons
+## Cons
+
 - kompleksitas code

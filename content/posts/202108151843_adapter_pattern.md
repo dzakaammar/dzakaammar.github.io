@@ -12,7 +12,9 @@ tags: ["software_design", "design_pattern", "oop", "golang"]
 Adapter pattern adalah pattern untuk menghubungkan sebuah interface yang tidak *compatible* dengan existing interface, dengan membuat sebuah interface sebagai "adapter". Secara sederhana, pattern ini digunakan untuk membuat object-object yang *incompatible* secara interface untuk saling berkolaborasi.
 
 Adapter membungkus sebuah object untuk menyembunyikan logic dan kompleksitas *conversion*, sehingga menjadikan object tersebut menjadi *compatible*
-### Karakteristik
+
+## Karakteristik
+
 - Implementasinya menggunakan *composition principle*, mengimplimentasi sebuah interface dan mem-*wrap* interface lainnya
 - Ada sebuah *Client Interface* yang digunakan oleh *Client* sebagai adapter
 - Ada sebuah *Adapter* class sebagai konkret object dari *Client Interface*, dimana logic untuk konversi ke interface yang dituju berada
@@ -136,9 +138,11 @@ func main() {
 
 Adapter pattern akan membuat kita menyediakan *middle-layer* yang bertugas sebagai translator antara client code dengan *third-party*, *legacy class*, atau interface apapun yang tidak compatible
 
-### Pros
+## Pros
+
 - Single reponsibility principle. Kita dapat memisahkan logic konversi dengan *primary business logic*
 - Open/Closed Principle. Kita dapat meng-extend atau menambah implementasi adapter baru tanpa harus merubah implementas adapter yang sudah ada.
 
-### Cons
-- 
+## Cons
+
+-

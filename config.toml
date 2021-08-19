@@ -23,7 +23,7 @@ avatarSize = "size-xs"
 description = "personal blog. my zettelkasten."
 
 # Accent color is displayed when you hover over <a> tags
-accentColor = "#045757"
+accentColor = "#386e77"
 
 # You can use this to inject any HTML in the <head> tag.
 # Ideal usecase for this is to import custom js/css or add your analytics snippet

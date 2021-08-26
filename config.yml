@@ -1,0 +1,111 @@
+baseURL: "http://dzakaammar.github.io/"
+title: dzaka.ammar
+paginate: 5
+theme: PaperMod
+
+enableRobotsTXT: true
+ignorefiles:
+  - content/posts/_templates
+
+minify:
+    disableXML: true
+    minifyOutput: true
+
+timeZone: Asia/Jakarta
+defaultContentLanguage: en
+languageCode: en
+
+googleAnalytics: G-QFVCGGK5X8
+
+params:
+    title: dzaka.ammar
+    description: "ExampleSite description"
+    keywords: [dzaka, dzaka ammar, dzakaammar, dzakaammar blog]
+    DateFormat: "January 2, 2006"
+    defaultTheme: dark # dark, light
+    disableThemeToggle: false
+
+    ShowReadingTime: true
+    ShowShareButtons: true
+    ShowPostNavLinks: true
+    ShowBreadCrumbs: true
+    ShowCodeCopyButtons: true
+    disableSpecial1stPost: false
+    disableScrollToTop: false
+    comments: false
+    hidemeta: false
+    hideSummary: false
+    showtoc: false
+    tocopen: false
+
+    assets:
+        disableHLJS: true # to disable highlight.js
+        # disableFingerprinting: true
+        favicon: "favicon.ico"
+        favicon16x16: "favicon-16x16.png"
+        favicon32x32: "favicon-32x32.png"
+        apple_touch_icon: "apple-touch-icon.png"
+        safari_pinned_tab: "apple-touch-icon.png"
+
+    label:
+        text: "dzaka.ammar"
+
+    # profile-mode
+    profileMode:
+        enabled: true # needs to be explicitly set
+        title: dzaka.ammar
+        subtitle: "software engineer"
+        imageUrl: "/images/avatar.jpg"
+        imageWidth: 170
+        imageHeight: 170
+        imageTitle: avatar
+
+    # home-info mode
+    homeInfoParams:
+        Title: "dzaka.ammar"
+        Content: software engineer
+
+    socialIcons:
+        - name: twitter
+          url: "https://twitter.com/dzakaakazd"
+        - name: github
+          url: "https://github.com/dzakaammar"
+        - name: linkedin
+          url: "https://www.linkedin.com/in/dzaka-ammar-ibrahim/"
+
+    cover:
+        hidden: true # hide everywhere but not in structured data
+        hiddenInList: true # hide on list pages and home
+        hiddenInSingle: true # hide on single page
+
+    # for search
+    # https://fusejs.io/api/options.html
+    fuseOpts:
+        isCaseSensitive: false
+        shouldSort: true
+        location: 0
+        distance: 1000
+        threshold: 0.4
+        minMatchCharLength: 0
+        keys: ["title", "permalink", "summary", "content"]
+menu:
+    main:
+        - identifier: posts
+          name: posts
+          url: /posts/
+          weight: 10
+        - identifier: tags
+          name: tags
+          url: /tags/
+          weight: 20
+
+# Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
+markup:
+    highlight:
+        codeFences: true
+        guessSyntax: true
+        lineNos: true
+        style: monokai
+
+permalinks:
+  posts: '/:year/:month/:day/:slug/'

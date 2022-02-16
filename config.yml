@@ -19,7 +19,7 @@ googleAnalytics: G-QFVCGGK5X8
 
 params:
   title: dzaka.ammar
-  description: "ExampleSite description"
+  description: "Dzaka's personal blog"
   keywords: [dzaka, dzaka ammar, dzakaammar, dzakaammar blog]
   DateFormat: "January 2, 2006"
   defaultTheme: dark # dark, light

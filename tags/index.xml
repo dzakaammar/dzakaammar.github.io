@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on dzaka.ammar</title>
+    <link>https://dzakaammar.github.io/tags/</link>
+    <description>Recent content in Tags on dzaka.ammar</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 16 Aug 2021 01:49:09 +0700</lastBuildDate><atom:link href="https://dzakaammar.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>design_pattern</title>
+      <link>https://dzakaammar.github.io/tags/design_pattern/</link>
+      <pubDate>Mon, 16 Aug 2021 01:49:09 +0700</pubDate>
+      
+      <guid>https://dzakaammar.github.io/tags/design_pattern/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>https://dzakaammar.github.io/tags/golang/</link>
+      <pubDate>Mon, 16 Aug 2021 01:49:09 +0700</pubDate>
+      
+      <guid>https://dzakaammar.github.io/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>oop</title>
+      <link>https://dzakaammar.github.io/tags/oop/</link>
+      <pubDate>Mon, 16 Aug 2021 01:49:09 +0700</pubDate>
+      
+      <guid>https://dzakaammar.github.io/tags/oop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>software_design</title>
+      <link>https://dzakaammar.github.io/tags/software_design/</link>
+      <pubDate>Mon, 16 Aug 2021 01:49:09 +0700</pubDate>
+      
+      <guid>https://dzakaammar.github.io/tags/software_design/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

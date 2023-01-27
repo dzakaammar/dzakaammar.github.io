@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>dzaka.ammar</title>
+    <link>https://dzakaammar.github.io/</link>
+    <description>Recent content on dzaka.ammar</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 16 Aug 2021 01:49:09 +0700</lastBuildDate><atom:link href="https://dzakaammar.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Structural Pattern: Adapter Pattern</title>
+      <link>https://dzakaammar.github.io/2021/08/16/structural-pattern-adapter-pattern/</link>
+      <pubDate>Mon, 16 Aug 2021 01:49:09 +0700</pubDate>
+      
+      <guid>https://dzakaammar.github.io/2021/08/16/structural-pattern-adapter-pattern/</guid>
+      <description>Bayangkan sebuah adapter dalam perangkat elektronik yang berfungsi menyambungkan antara hardware dengan sumber listrik. Analogi yang sama dengan Adapter Pattern .
+Adapter pattern adalah pattern untuk menghubungkan sebuah interface yang tidak compatible dengan existing interface, dengan membuat sebuah interface sebagai &amp;ldquo;adapter&amp;rdquo;. Secara sederhana, pattern ini digunakan untuk membuat object-object yang incompatible secara interface untuk saling berkolaborasi.
+Adapter membungkus sebuah object untuk menyembunyikan logic dan kompleksitas conversion, sehingga menjadikan object tersebut menjadi compatible</description>
+    </item>
+    
+    <item>
+      <title>Creational Pattern: Prototype</title>
+      <link>https://dzakaammar.github.io/2021/08/15/creational-pattern-prototype/</link>
+      <pubDate>Sun, 15 Aug 2021 15:15:09 +0700</pubDate>
+      
+      <guid>https://dzakaammar.github.io/2021/08/15/creational-pattern-prototype/</guid>
+      <description>Prototype pattern menyediakan cara untuk meng-copy existing object tanpa membuat code harus dependen terhadap class mereka.
+Karakteristik Tujuannya ingin membuat sebuat object baru dengan cara mengcopy object yang telah ada secara komplit (tidak bisa dilakukan secara direct, karena mungkin ada private field yang tidak bisa terlihat atau tidak dapat diakses dari sisi client) Mengcopy object tanpa harus terikat dengan logic bagaimana seharusnya object tersebut dicopy Adanya sebuah interface Prototype untuk mengabstraksi proses cloning.</description>
+    </item>
+    
+    <item>
+      <title>Creational Pattern: Singleton</title>
+      <link>https://dzakaammar.github.io/2021/08/15/creational-pattern-singleton/</link>
+      <pubDate>Sun, 15 Aug 2021 14:33:09 +0700</pubDate>
+      
+      <guid>https://dzakaammar.github.io/2021/08/15/creational-pattern-singleton/</guid>
+      <description>Singleton menyediakan cara untuk membuat single instance dan menyediakan cara untuk mengakses/menggunakan instance tersebut sebagai global variable. Memastikan hanya terdapat satu instance dari produk tertentu selama aplikasi berjalan.
+Karakterstik Terdapat global variable untuk mendefine single instance. Dalam banyak implementasi, global variable tersebut memiliki default value dan tidak kosong, untuk selanjutnya bisa diganti melalui fungsi setter Adanya setter function untuk mengisi value dari instance tersebut Adanya getter function untuk memberikan cara agar package lain atau client mengakses instance tersebut Instance yang digukan untuk singleton harus bersifat private dan memastikan hanya dapat diubah/diisi sekali dalam compile time atau pun runtime Harus conccurent safe dan nil pointer safe (jika default value adalah nil) Untuk memastikan bahwa instance hanya dapat sekali diubah/diisi, implementasi di Go dapat menggunakan sync.</description>
+    </item>
+    
+    <item>
+      <title>Creational Pattern: Builder</title>
+      <link>https://dzakaammar.github.io/2021/08/15/creational-pattern-builder/</link>
+      <pubDate>Sun, 15 Aug 2021 10:30:09 +0700</pubDate>
+      
+      <guid>https://dzakaammar.github.io/2021/08/15/creational-pattern-builder/</guid>
+      <description>Builder pattern menyediakan cara untuk meng-construct sebuah object yang kompleks step by step dan memproduksi berbagai macam type atau representasi object dengan satu cara konstruksi yang sama.
+Bayangkan sebuah object memiliki beberapa parameter pada saat konstruksi. Parameter-parameter tersebut akan menentukan bagaimana sebuah object akan terbentuk. Parameter akan terus bertambah seiring banyaknya posibilitas konstruksi.
+Kita dapat memilih untuk membuat sebuah atau beberapa fungsi untuk menghandle possibility tersebut:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 package main type User struct { FirstName string LastName string Email string } func NewUserWithoutEmail(fn *string, ln *string) *User { u := &amp;amp;User{} if fn !</description>
+    </item>
+    
+    <item>
+      <title>Creational Pattern: Abstract Factory</title>
+      <link>https://dzakaammar.github.io/2021/08/14/creational-pattern-abstract-factory/</link>
+      <pubDate>Sat, 14 Aug 2021 14:10:09 +0700</pubDate>
+      
+      <guid>https://dzakaammar.github.io/2021/08/14/creational-pattern-abstract-factory/</guid>
+      <description>Abstract factory menyediakan produksi families dari objek-objek yang terkait tanpa harus menentukan konkrit class nya.
+Karakteristik Ada banyak tipe produk dan banyak variant dari produk. Contoh tipe produk: meja, kursi, sofa. Contoh variant dari produk: style modern, style kuno, style minimalis Famili produk (tipe produk + jenis variant nya) Tujuannya ingin membuat sebuah factory untuk memproduksi famili dari produk Adanya abstraksi dari masing-masing tipe object (abstract product). Contoh: interface meja, kursi, dan sofa Adanya abstraksi yang men-define struktur dari sebuah famili produk (abstract factory) Adanya sebuah fungsi/method yang menentukan factory mana yang digunakan berdasarkan data yang diberikan 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 package main const ( Breakfast = iota Lunch ) // Coffee adalah abstract product type Coffee interface { Drink() } // Bread adalah abstract product type Bread interface { Eat() } // Menu adalah abstract factory type Menu interface{ GetCoffee() Coffee GetBread() Bread } // GetMenu adalah fungsi untuk menentukan factory mana yang digunakan // berdasarkan data yang diberikan.</description>
+    </item>
+    
+    <item>
+      <title>Creational Pattern: Factory</title>
+      <link>https://dzakaammar.github.io/2021/08/13/creational-pattern-factory/</link>
+      <pubDate>Fri, 13 Aug 2021 19:44:09 +0700</pubDate>
+      
+      <guid>https://dzakaammar.github.io/2021/08/13/creational-pattern-factory/</guid>
+      <description>Factory pattern menyediakan cara untuk membuat sebuah object pada superclass, namun memberikan cara subclass untuk merubah type nya.
+Karakteristik Ada abstraksi dari produk object menggunakan interface Setiap concrete implementation object produk tersebut, harus men-satisfy interface Ada sebuah function yang menjadi logic creational nya Function tersebut membutuhkan &amp;ldquo;data&amp;rdquo;, untuk menentukan object mana yang harus di create 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 package main // Coffee adalah abstraksi dari product type Coffee interface { Make() } // Arabica adalah konkrit product type Arabica struct {} func(a Arabica) Make() {} // Robusta adalah konkrit product type Robusta struct {} func(r Robusta) Make() {} // Data yang dibutuhkan untuk menentukan tipe produk const ( Arabica = iota Robusta ) // GetCoffee adalah fungsi creational dari produk Coffee func GetCoffee(t int) Coffee { switch t { case Arabica: return Arabica{} default: return Robusta{} } } func main() { coffee := GetCoffee(Arabica) coffee.</description>
+    </item>
+    
+    <item>
+      <title>Design Patterns</title>
+      <link>https://dzakaammar.github.io/2021/08/13/design-patterns/</link>
+      <pubDate>Fri, 13 Aug 2021 19:40:09 +0700</pubDate>
+      
+      <guid>https://dzakaammar.github.io/2021/08/13/design-patterns/</guid>
+      <description>Creational Pattern Creational pattern menyediakan variasi mekanisme membuat sebuah object, yang tujuannya adalah membuat code yang fleksibel dan reusable.
+Factory Abstract Factory Singleton Builder Prototype Structural Pattern Structural pattern menyediakan mekanisme bagaimana mengatur objek-objek kedalam struktur yang lebih besar, namun tetap menjaga struktur tersebut tetap fleksibel dan efisien.
+Adapter Proxy Decorator Facade Flyweight Composite Bridge Behavioral Pattern Chain of Responsibility Command Iterator Mediator Memento Observer State Strategy Template Method Visitor References Dive into Design Patterns - Alexandere Shvets Go Design Patterns - Mario Castro Contreras </description>
+    </item>
+    
+  </channel>
+</rss>

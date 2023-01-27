@@ -1,3 +1,0 @@
-User-agent: *
-Disallow:
-Sitemap: https://dzakaammar.github.io/sitemap.xml

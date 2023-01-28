@@ -35,7 +35,7 @@ params:
   comments: false
   hidemeta: false
   hideSummary: false
-  showtoc: false
+  showtoc: true
   tocopen: false
 
   assets:
@@ -56,8 +56,8 @@ params:
     title: "dzaka.ammar"
     subtitle: "personal blog | software engineer👨‍💻 🇮🇩"
     imageUrl: "/images/avatar.jpeg"
-    imageWidth: 250
-    imageHeight: 250
+    imageWidth: 150
+    imageHeight: 150
     imageTitle: avatar
 
   # home-info mode
@@ -77,17 +77,6 @@ params:
     hidden: true # hide everywhere but not in structured data
     hiddenInList: true # hide on list pages and home
     hiddenInSingle: true # hide on single page
-
-  # for search
-  # https://fusejs.io/api/options.html
-  fuseOpts:
-    isCaseSensitive: false
-    shouldSort: true
-    location: 0
-    distance: 1000
-    threshold: 0.4
-    minMatchCharLength: 0
-    keys: ["title", "permalink", "summary", "content"]
 menu:
   main:
     - identifier: posts

@@ -56,8 +56,8 @@ params:
     title: "dzaka.ammar"
     subtitle: "personal blog | software engineer👨‍💻 🇮🇩"
     imageUrl: "/images/avatar.jpeg"
-    imageWidth: 150
-    imageHeight: 150
+    imageWidth: 200
+    imageHeight: 200
     imageTitle: avatar
 
   # home-info mode

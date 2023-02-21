@@ -55,9 +55,9 @@ params:
     enabled: true # needs to be explicitly set
     title: "dzaka.ammar"
     subtitle: "personal blog | software engineer👨‍💻 🇮🇩"
-    imageUrl: "/images/avatar.jpeg"
-    imageWidth: 200
-    imageHeight: 200
+    imageUrl: "/images/avatar.png"
+    imageWidth: 164
+    imageHeight: 170
     imageTitle: avatar
 
   # home-info mode

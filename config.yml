@@ -87,8 +87,8 @@ menu:
       name: tags
       url: /tags/
       weight: 20
-    - identifier: resume
-      name: resume
+    - identifier: résumé
+      name: résumé
       url: "https://dzakaammar.github.io/resume"
       weight: 30
 

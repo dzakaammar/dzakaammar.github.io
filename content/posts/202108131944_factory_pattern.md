@@ -1,7 +1,7 @@
 ---
 title: "Creational Pattern: Factory"
 date: 2021-08-13T19:44:09+07:00
-draft: false
+draft: true
 type: "post"
 tags: ["software_design", "design_pattern", "oop", "golang"]
 ---

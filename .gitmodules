@@ -1,15 +1,3 @@
-[submodule "themes/gokarna"]
-    path = themes/gokarna
-    url = https://github.com/526avijitgupta/gokarna.git
-[submodule "themes/hello-friend-ng"]
-	path = themes/hello-friend-ng
-	url = https://github.com/rhazdon/hugo-theme-hello-friend-ng.git
-[submodule "themes/anubis"]
-	path = themes/anubis
-	url = https://github.com/mitrichius/hugo-theme-anubis.git
-[submodule "themes/linkshrubbery"]
-	path = themes/linkshrubbery
-	url = https://github.com/tohn/linkshrubbery.git
 [submodule "themes/PaperMod"]
-	path = themes/PaperMod
-	url = https://github.com/adityatelange/hugo-PaperMod.git
+path = themes/PaperMod
+url = https://github.com/adityatelange/hugo-PaperMod.git

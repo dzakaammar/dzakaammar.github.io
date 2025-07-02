@@ -1,6 +1,7 @@
 baseURL: "https://dzakaammar.github.io/"
 title: dzaka.ammar
-paginate: 5
+pagination:
+  pagerSize: 5
 theme: PaperMod
 
 enableRobotsTXT: true

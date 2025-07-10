@@ -13,7 +13,7 @@ Singleton menyediakan cara untuk membuat *single instance* dan menyediakan cara 
 - Terdapat global variable untuk mendefine *single instance*. Dalam banyak implementasi, global variable tersebut memiliki default value dan tidak kosong, untuk selanjutnya bisa diganti melalui fungsi *setter*
 - Adanya *setter function* untuk mengisi value dari instance tersebut
 - Adanya *getter function* untuk memberikan cara agar package lain atau client mengakses instance tersebut
-- Instance yang digukan untuk singleton harus bersifat private dan memastikan hanya dapat diubah/diisi sekali dalam compile time atau pun runtime  
+- Instance yang digukan untuk singleton harus bersifat private dan memastikan hanya dapat diubah/diisi sekali dalam compile time atau pun runtime
 - Harus *conccurent safe* dan *nil pointer safe* (jika default value adalah nil)
 
 > Untuk memastikan bahwa instance hanya dapat sekali diubah/diisi, implementasi di Go dapat menggunakan sync.Once.
@@ -38,7 +38,7 @@ var (
 
 func Set(l Logger) {
 	if l == nil { return }
-	
+
 	// untuk memastikan bahwa hanya 1 kali call Set yang akan diproses
 	// selama runtime
 	once.Do(func(){
@@ -69,7 +69,7 @@ func (l loggerWithFile) Println(s string) {
 
 func main() {
 	logger.Set(&loggerWithFile{filename: "test.txt"})
-	
+
 	lgr := logger.Get()
 	lgr.Println("test"
 }

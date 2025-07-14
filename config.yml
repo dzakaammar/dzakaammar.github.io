@@ -89,7 +89,7 @@ params:
     enabled: true # needs to be explicitly set
     title: "{ } 🥷🏼 ☕︎"
     subtitle: >
-      Welcome to my personal blog 👋 I'm a software engineer from Indonesia 🇮🇩 learning and sharing thoughts about technology and programming.
+      Welcome to my personal blog 👋 I'm a software engineer from Indonesia 🇮🇩 learning and sharing thoughts.
     imageUrl: "/images/avatar.png"
     imageWidth: 100
     imageHeight: 110

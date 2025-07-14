@@ -1,41 +1,77 @@
 baseURL: "https://dzakaammar.github.io/"
 title: dzaka.ammar
 pagination:
+  disableAliases: false
   pagerSize: 5
-theme: PaperMod
-
+theme: hugo-PaperMod
 enableRobotsTXT: true
-ignorefiles:
-  - content/posts/_templates
-
+enableInlineShortcodes: true
+enableEmoji: true
+buildDrafts: false
+pygmentsUseClasses: true
 minify:
   disableXML: true
   minifyOutput: true
-
+mainsections: ["posts"]
 timeZone: Asia/Jakarta
 defaultContentLanguage: en
 languageCode: en
-
 googleAnalytics: G-QFVCGGK5X8
 
+languages:
+  en:
+    languageName: English
+    weight: 1
+    taxonomies:
+      tags: "tags"
+      categories: "categories"
+      series: "series"
+    menu:
+      main:
+        - identifier: posts
+          name: posts
+          url: /posts/
+          weight: 9
+        - identifier: archive
+          name: archive
+          url: /archives/
+          weight: 10
+        - identifier: tags
+          name: tags
+          url: /tags/
+          weight: 20
+        # - identifier: series
+        #   name: series
+        #   url: /series/
+        #   weight: 21
+        - identifier: search
+          name: search
+          url: /search/
+          weight: 30
+        # - identifier: résumé
+        #   name: résumé
+        #   url: "https://dzakaammar.github.io/resume"
+        #   weight: 40
+
 params:
+  env: production
   title: dzaka.ammar
+  author: Dzaka Ammar Ibrahim
   description: "Dzaka's personal blog"
   keywords: [dzaka, dzaka ammar, dzakaammar, dzakaammar blog]
   DateFormat: "January 2, 2006"
   defaultTheme: dark # dark, light
   disableThemeToggle: false
 
+  ShowAllPagesInArchive: true
   ShowReadingTime: true
   ShowShareButtons: true
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
   ShowCodeCopyButtons: true
-  disableSpecial1stPost: false
   disableScrollToTop: false
+  ShowPageNums: true
   comments: true
-  hidemeta: false
-  hideSummary: false
   showtoc: true
   tocopen: false
 
@@ -48,23 +84,22 @@ params:
     apple_touch_icon: "apple-touch-icon.png"
     safari_pinned_tab: "safari-pinned-tab.svg"
 
-  label:
-    text: "dzaka.ammar"
-
   # profile-mode
   profileMode:
     enabled: true # needs to be explicitly set
-    title: "dzaka.ammar"
-    subtitle: "personal blog | software engineer👨‍💻 🇮🇩"
+    title: "{ } 🥷🏼 ☕︎"
+    subtitle: >
+      Welcome to my personal blog 👋 I'm a software engineer from Indonesia 🇮🇩 learning and sharing thoughts about technology and programming.
     imageUrl: "/images/avatar.png"
-    imageWidth: 164
-    imageHeight: 170
+    imageWidth: 100
+    imageHeight: 110
     imageTitle: avatar
 
   # home-info mode
   homeInfoParams:
-    Title: "dzaka.ammar"
-    Content: software engineer
+    Title: "Hi there 👋"
+    Content: >
+      Welcome to my personal blog! I'm a software engineer from Indonesia 🇮🇩 sharing insights about technology, programming, and my journey in the tech world.
 
   socialIcons:
     - name: twitter
@@ -73,41 +108,28 @@ params:
       url: "https://github.com/dzakaammar"
     - name: linkedin
       url: "https://www.linkedin.com/in/dzaka-ammar-ibrahim/"
+    - name: cv
+      url: "https://dzakaammar.github.io/resume"
 
   cover:
     hidden: false # hide everywhere but not in structured data
     hiddenInList: false # hide on list pages and home
     hiddenInSingle: false # hide on single page
 
-menu:
-  main:
-    - identifier: posts
-      name: posts
-      url: /posts/
-      weight: 10
-    - identifier: tags
-      name: tags
-      url: /tags/
-      weight: 20
-    - identifier: search
-      name: search
-      url: /search/
-      weight: 30
-    - identifier: résumé
-      name: résumé
-      url: "https://dzakaammar.github.io/resume"
-      weight: 40
-
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 markup:
+  goldmark:
+    renderer:
+      unsafe: true
   highlight:
+    noClasses: false
     codeFences: true
     guessSyntax: true
     lineNos: true
     style: monokai
 
 permalinks:
-  posts: "/:year/:month/:day/:slug/"
+  posts: "/posts/:year/:month/:slug/"
 
 outputs:
   home:
